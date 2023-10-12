@@ -1,17 +1,21 @@
-const express = require('express');
-
+const express = require("express");
+const bodyParser = require("body-parser");
+require("./utils/db");
 const app = express();
-const PORT = process.env.PORT || 5000;
+const productRoutes = require("./routes/productRoutes");
+const port = 3005;
 
+app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.send("Hello World!");
-})
+app.use("/api", productRoutes);
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 
-app.get('/welcome', (req, res) => {
-    res.send("Welcome to Lab # 6 of Sir Laeeq Khan Niazi");
-})
+app.get("/Welcome", (req, res) => {
+  res.send("Afraz Butt Hello");
+});
 
-app.listen(PORT, ()=>{
-    console.log(`Server up and running on port ${PORT}.`);
-})
+app.listen(port, () => {
+  console.log(`App is listening on port ${port}`);
+});
