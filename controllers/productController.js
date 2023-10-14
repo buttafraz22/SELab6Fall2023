@@ -41,4 +41,16 @@ async function updateProduct(req, res) {
   }
 }
 
-module.exports = { createProduct, getProduct, updateProduct };
+async function deleteProduct(req, res){
+  try {
+    const productId = req.body.id;
+
+    await Product.findByIdAndRemove({_id: productId});
+
+    res.status(200);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}
+
+module.exports = { createProduct, getProduct, updateProduct, deleteProduct };
