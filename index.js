@@ -3,11 +3,13 @@ const bodyParser = require("body-parser");
 require("./utils/db");
 const app = express();
 const productRoutes = require("./routes/productRoutes");
+const userRoutes = require("./routes/userRoute")
 const port = 3005;
 
 app.use(bodyParser.json());
 
 app.use("/api", productRoutes);
+app.use("/userApi", userRoutes);
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
