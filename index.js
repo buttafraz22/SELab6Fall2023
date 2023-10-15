@@ -3,13 +3,15 @@ const bodyParser = require("body-parser");
 require("./utils/db");
 const app = express();
 const productRoutes = require("./routes/productRoutes");
-const userRoutes = require("./routes/userRoute")
+const userRoutes = require("./routes/userRoute");
+const invoiceRoutes = require('./routes/invoiceRoute');
 const port = 3005;
 
 app.use(bodyParser.json());
 
-app.use("/api", productRoutes);
+app.use("/productApi", productRoutes);
 app.use("/userApi", userRoutes);
+app.use("/invoiceApi", invoiceRoutes);
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
