@@ -43,11 +43,11 @@ async function updateProduct(req, res) {
 
 async function deleteProduct(req, res){
   try {
-    const productId = req.body.id;
+    const { id } = req.params;
 
-    await Product.findByIdAndRemove({_id: productId});
+    await Product.findByIdAndRemove( id );
 
-    res.status(200);
+    res.status(204);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

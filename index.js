@@ -9,7 +9,7 @@ const port = 3005;
 
 app.use(bodyParser.json());
 
-app.use("/productApi", productRoutes);
+app.use("/productApi/products", productRoutes);
 app.use("/userApi", userRoutes);
 app.use("/invoiceApi", invoiceRoutes);
 app.get("/", (req, res) => {
